@@ -27,11 +27,19 @@ for file in os.listdir(directory):
         print(copiedData[0])
 
         if filename in shakespeares:
-            print("shakespeare")
+            #print("shakespeare")
             tempTrainingData = ("0", copiedData)
         else:
-            print("austen")
+            #print("austen")
             tempTrainingData = ("1", copiedData)
 
         trainingData.append(tempTrainingData)
         #print(trainingData[0][1])
+
+#save this data to the trainign data file
+with open("trainingData.txt", 'w') as file:
+    # for item in trainingData:
+    #     file.write(item)
+    #     print(item)
+
+    file.write('\n'.join('{} {}'.format(item[0],item[1]) for item in trainingData))
